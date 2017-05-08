@@ -26,7 +26,7 @@ python manage.py migrate
 ```
 
 ### Debug
-Секцию администратора и debug mode можно настроить соответсвенно переменными `ADMIN_AVAILABLE` и `DEBUG`.
+Секцию администратора и debug mode можно настроить соответственно переменными `ADMIN_AVAILABLE` и `DEBUG`.
 
 ### Memcached
 Адрес, порт и время сохранения кэш-записи в Memcached можно изменить в переменной `CACHES`:
@@ -50,6 +50,13 @@ memcached
 python manage.py runserver
 ```
 
+## Тестирование
+**Важно** Перед запуском тестов запустите Memcached, иначе тест на кеширование не будет проходить.  
+Для запуска тестов необходимо выполнить:
+```
+python manage.py test
+```
+
 ## Load testing
 К приложению приложен простой скрипт для генерации запросов к API `loadtest.py`:
 ```
@@ -60,7 +67,7 @@ optional arguments:
   -requests REQUESTS  Number of requests to generate
 ```
 Для нагрузочного тестирования советуем использовать [vegeta](https://github.com/tsenart/vegeta).  
-Тогда для проведения теста необходимо выполнить:
+Тогда для проведения теста на нагрузку необходимо выполнить:
 ```
 python loadtest.py -requests <requests count> | vegeta attack -lazy | vegeta report
 ```
